@@ -53,11 +53,11 @@ line-length = 100
 target-version = ["py39"]
 
 [tool.ruff]
-# line-length = 100
-# ignore-init-module-imports = true
+line-length = 100
+ignore-init-module-imports = true
 # # Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
 # select = ["F", "E", "W", "I001"]
 # ignore = ["E501", "PGH001", "PGH002", "PGH003", "RET504", "S101"]
 # unfixable = ["ERA001", "F401", "F841", "T201", "T203"]
 # src = ["src", "tests"]
-# target-version = "py39"
+target-version = "py39"
