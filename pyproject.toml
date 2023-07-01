@@ -1,0 +1,63 @@
+[tool.poetry]
+name = "lawgpt"
+version = "0.1.0"
+description = ""
+authors = ["Zheng-Kai Ye <supon3060@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "lawgpt", from = "src" }]
+
+[tool.poetry.scripts]
+lawgpt = 'lawgpt.cli:app'
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.11"
+torch = [
+    { url = "https://download.pytorch.org/whl/cu118/torch-2.0.1%2Bcu118-cp39-cp39-linux_x86_64.whl", platform = "linux", python = ">=3.9 <3.10" },
+    { url = "https://download.pytorch.org/whl/cu118/torch-2.0.1%2Bcu118-cp310-cp310-linux_x86_64.whl", platform = "linux", python = ">=3.10 <3.11" },
+    { url = "https://download.pytorch.org/whl/cu118/torch-2.0.1%2Bcu118-cp39-cp39-win_amd64.whl", platform = "win32", python = ">=3.9 <3.10" },
+    { url = "https://download.pytorch.org/whl/cu118/torch-2.0.1%2Bcu118-cp310-cp310-win_amd64.whl", platform = "win32", python = ">=3.10 <3.11" },
+] # https://github.com/python-poetry/poetry/issues/6409
+# transformers = "^4.30.2"
+transformers = { git = "https://github.com/huggingface/transformers.git" }
+# accelerate = "^0.20.3"
+accelerate = { git = "https://github.com/huggingface/accelerate.git" }
+# peft = "^0.3.0"
+peft = { git = "https://github.com/huggingface/peft.git" }
+bitsandbytes = "^0.39.0" #  Using `load_in_8bit=True` requires Accelerate: `pip install accelerate` and the latest version of bitsandbytes `pip install -i https://test.pypi.org/simple/ bitsandbytes` or pip install bitsandbytes` (peft already has the accelerator installed)
+scipy = "^1.10.1" # As of 2023/5/31, bitsandbytes requires 'scipy', but the dependency in bitsandbytes does not contain 'scipy', so it needs to be added explicitly.
+datasets = "^2.12.0"
+typer = "^0.9.0"
+orjson = "^3.9.1"
+gradio = { version = "^3.32.0", optional = true }
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.0.270"
+ipython = "^8.13.2"
+black = "^23.3.0"
+mypy = "^1.3.0"
+
+[tool.poetry.extras]
+app = ["gradio"]
+
+# [[tool.poetry.source]]
+# name = "torch-cu118"
+# url = "https://download.pytorch.org/whl/cu118"
+# priority = "explicit"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]  # https://black.readthedocs.io/en/stable/usage_and_configuration/the_basics.html#configuration-via-a-file
+line-length = 100
+target-version = ["py39"]
+
+[tool.ruff]
+# line-length = 100
+# ignore-init-module-imports = true
+# # Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
+# select = ["F", "E", "W", "I001"]
+# ignore = ["E501", "PGH001", "PGH002", "PGH003", "RET504", "S101"]
+# unfixable = ["ERA001", "F401", "F841", "T201", "T203"]
+# src = ["src", "tests"]
+# target-version = "py39"
