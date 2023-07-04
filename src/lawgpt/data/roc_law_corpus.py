@@ -72,6 +72,7 @@ def process_raw_dataset(download_data_dir: StrPath, processed_dir: StrPath) -> N
 
 
 def download_and_process_dataset(download_data_dir: StrPath, processed_dir: StrPath) -> None:
+    """Download dataset to `download_data_dir` and save processed dataset to `processed_dir`"""
     download_data_dir = Path(download_data_dir)
     for metadata in METADATA:
         if not (download_data_dir / metadata["filename"]).is_file():
