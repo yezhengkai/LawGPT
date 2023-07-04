@@ -10,4 +10,4 @@ METADATA = [
         "sha256": "1eb0511aa87cd3289ee3ce7b20e57e3c554d1fb4c7216954f6d141bb15130dc5",
     },
 ]
-PROCESSED_JSON_NAME = "law_data.json"
+PROCESSED_JSON_NAME = "roc_law_corpus.json"
