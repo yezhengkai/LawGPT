@@ -8,22 +8,22 @@ from typing_extensions import Annotated
 
 from lawgpt.data import download_and_process_dataset
 
-DEFAULT_TRAINING_SCRIPT = str(Path(__file__).resolve().parent / "finetune.py")
+FINETUNE_LORA_SCRIPT = str(Path(__file__).resolve().parents[1] / "finetune_lora.py")
 
 
 def download_and_process_dataset_cli(
     download_data_dir: Annotated[
-        Path,
+        Optional[Path],
         typer.Argument(
             exists=False, file_okay=False, dir_okay=True, help="Path to save downloaded dataset"
         ),
-    ],
+    ] = "./data/downloaded",
     processed_dir: Annotated[
-        Path,
+        Optional[Path],
         typer.Argument(
             exists=False, file_okay=False, dir_okay=True, help="Path to save processed dataset"
         ),
-    ],
+    ] = "./data/processed",
 ):
     """Download and process dataset"""
     download_and_process_dataset(download_data_dir, processed_dir)
@@ -35,7 +35,7 @@ class StartMethod(str, Enum):
     forkserver = "forkserver"
 
 
-def torchrun(
+def torchrun_lora(
     training_script_args: Annotated[Optional[List[str]], typer.Argument()] = None,
     training_script: Annotated[
         str,
@@ -43,7 +43,7 @@ def torchrun(
             help="Full path to the (single GPU) training program/script to be launched in parallel, "
             "followed by all the arguments for the training script."
         ),
-    ] = DEFAULT_TRAINING_SCRIPT,
+    ] = FINETUNE_LORA_SCRIPT,
     nnodes: Annotated[
         str,
         typer.Option(
