@@ -31,8 +31,8 @@ app = typer.Typer()
 def train(
     # model/data params
     base_model: str = "bigscience/bloom-3b",  # the only required argument
-    data_path: str = "./data/processed/law_data.json",
-    output_dir: str = "./lawgpt-bloom-3b-lora-sft-v1",  # lawgpt-{BaseModel}-{ModelSize}-{TrainMethod}-{Stage}-(Version)
+    data_path: str = "./data/processed/roc_law_corpus.json",
+    output_dir: str = "./output/lawgpt-bloom-3b-lora-sft-v1",  # lawgpt-{BaseModel}-{ModelSize}-{TrainMethod}-{Stage}-(Version)
     cache_dir: str = os.path.expanduser(os.path.join("~", ".cache", "huggingface", "hub")),
     # training hyperparams
     batch_size: int = 128,
