@@ -24,10 +24,7 @@ import torch.nn as nn
 import bitsandbytes as bnb
 """
 
-app = typer.Typer()
 
-
-@app.command()
 def train(
     # model/data params
     base_model: str = "bigscience/bloom-3b",  # the only required argument
@@ -275,4 +272,4 @@ def train(
 
 
 if __name__ == "__main__":
-    app()
+    typer.run(train)
