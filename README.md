@@ -1,5 +1,7 @@
 # LawGPT
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/yezhengkai/LawGPT/blob/main/notebooks/demo.ipynb)
+An experimental project to fine-tune a LLM using ROC law-related content.
+
+If you would like to try this project, you can click [here](https://colab.research.google.com/github/yezhengkai/LawGPT/blob/main/notebooks/demo.ipynb) to open [demo.ipynb](notebooks/demo.ipynb) in Colab.
 
 ## Dataset
 ```bash
